@@ -209,4 +209,12 @@ class CueSquareView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : CueSquareView {
+            val view : CueSquareView = CueSquareView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
