@@ -1,0 +1,3 @@
+include ':cuesquareview'
+include ':app'
+rootProject.name = "LinkedCueSquareView"
