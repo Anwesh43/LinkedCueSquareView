@@ -184,4 +184,27 @@ class CueSquareView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : CueSquareView) {
+
+        private val animator : Animator = Animator(view)
+        private val cs : CueSquare = CueSquare(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas, paint : Paint) {
+            canvas.drawColor(backColor)
+            cs.draw(canvas, paint)
+            animator.animate {
+                cs.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            cs.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
